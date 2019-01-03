@@ -21,7 +21,7 @@ set(SOURCES1
 
 PREPEND(SOURCES_REL1 ${SDIR} ${SOURCES1})
 
-set(CMAKE_CXX_FLAGS "-Wall -Werror -Wextra")
+set(CMAKE_CXX_FLAGS "-std=c++11")
 
 message("EXECUTABLE_OUTPUT_PATH - ${EXECUTABLE_OUTPUT_PATH}")
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR} CACHE PATH "Executable output dir" FORCE)
@@ -30,4 +30,4 @@ message("EXECUTABLE_OUTPUT_PATH - ${EXECUTABLE_OUTPUT_PATH}")
 add_executable(${NAME1} ${SOURCES_REL1})
 target_include_directories(${NAME1} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${INC}/)
 
-target_link_libraries(${NAME1})
+add_subdirectory("Tests")
