@@ -6,7 +6,7 @@
 /*   By: adzikovs <adzikovs@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 07:37:10 by adzikovs          #+#    #+#             */
-/*   Updated: 2019/01/07 12:07:55 by adzikovs         ###   ########.fr       */
+/*   Updated: 2019/01/08 12:28:05 by adzikovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,14 @@ typedef std::vector<LexicalTreeNode*>		t_vSubNodes;
 
 class LexicalTreeNode
 {
+	friend class		ParserTest;
 public:
 	void				addSubNode(LexicalTreeNode *subNode);
 	std::string const	&getName(void) const;
+	LexicalTreeNode		*getParent(void) const;
 	std::string const	&getContent(void) const;
 	t_vs				lexicalCheck(bool strict) const;
+	virtual t_vs		getIntervals(void) const = 0;
 	virtual				~LexicalTreeNode(void);
 
 protected:

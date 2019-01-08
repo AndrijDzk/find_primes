@@ -6,7 +6,7 @@
 /*   By: adzikovs <adzikovs@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 07:44:12 by adzikovs          #+#    #+#             */
-/*   Updated: 2019/01/07 12:14:27 by adzikovs         ###   ########.fr       */
+/*   Updated: 2019/01/08 08:26:00 by adzikovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ void				LexicalTreeNode::addSubNode(LexicalTreeNode *subNode)
 std::string const	&LexicalTreeNode::getName(void) const
 {
 	return (this->name);
+}
+
+LexicalTreeNode*	LexicalTreeNode::getParent(void) const
+{
+	return (this->parent);
 }
 
 std::string const	&LexicalTreeNode::getContent(void) const
@@ -79,5 +84,15 @@ t_vs				LexicalTreeNode::checkSubNodesAndParent(
 			if (strict || subNode->getName() != TEXT_NAME)
 				res.push_back(WRONG_PARRENT_ERR(subNode->getName(), this->name));
 		}
+	return (res);
+}
+
+t_vs				LexicalTreeNode::getIntervals(void) const
+{
+	t_vs			res;
+
+	for (auto const &subnode : this->subNodes)
+		for (auto const &interval : subnode->getIntervals())
+			res.push_back(interval);
 	return (res);
 }
