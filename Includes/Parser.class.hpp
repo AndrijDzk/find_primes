@@ -6,7 +6,7 @@
 /*   By: adzikovs <adzikovs@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 10:15:55 by adzikovs          #+#    #+#             */
-/*   Updated: 2019/01/06 14:45:06 by adzikovs         ###   ########.fr       */
+/*   Updated: 2019/01/07 07:44:03 by adzikovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 
 #define MISSING_OT(X) "Missing </" + X + "> opening tag"
 #define MISSING_CT(X) "Missing <" + X + "> closing tag"
-
-typedef std::vector<std::string>			t_vs;
 
 class Parser
 {
@@ -49,9 +47,18 @@ public:
 	Parser::t_intervals		readIntervals(std::string const &filename);
 
 private:
-	int						checkForErrors(std::string const &str, std::string &right, t_vs &errors);
-	int							checkForMissingOpeningTag(std::string const &str, std::string &right, t_vs &errors);
-	int							checkForMissingClosingTag(std::string const &str, std::string &right, t_vs &errors);
+	int						checkForErrors(
+								std::string const &str,
+								std::string &right,
+								t_vs &errors);
+	int						checkForMissingOpeningTag(
+								std::string const &str,
+								std::string &right,
+								t_vs &errors);
+	int						checkForMissingClosingTag(
+								std::string const &str,
+								std::string &right,
+								t_vs &errors);
 	Parser::t_tag_pair		getTagPair(
 								std::string const &str,
 								t_vs &errors);

@@ -12,4 +12,9 @@
 
 #pragma once
 
-typedef unsigned int	t_nb;
+#include <string>
+#include <vector>
+
+typedef unsigned int				t_nb;
+
+typedef std::vector<std::string>	t_vs;

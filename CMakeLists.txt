@@ -16,7 +16,16 @@ set(NAME1 find_primes)
 set(SDIR Srcs)
 
 set(SOURCES1
+		"find_primes_in_range.cpp"
 		"is_prime.cpp"
+		"myMap.class.cpp"
+		"LexicalTreeNode.class.cpp"
+		"LowTagLTN.class.cpp"
+		"Parser.class.checkForErrors.cpp"
+		"Parser.class.getTagPair.cpp"
+		"Parser.class.openFile.cpp"
+		"Parser.class.readIntervals.cpp"
+		"init_static.cpp"
 		"main.cpp")
 
 PREPEND(SOURCES_REL1 ${SDIR} ${SOURCES1})

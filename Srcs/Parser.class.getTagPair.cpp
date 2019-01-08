@@ -23,10 +23,10 @@ Parser::t_tag_pair		Parser::getTagPair(
 	std::smatch			match;
 	Parser::t_tag_pair	res;
 
-	expr = "<([.]+)>";
-	expr += "([.[:s:]]*)";
+	expr = "<([^/<>]+)>";
+	expr += "([^]*)";
 	expr += "</()\\0>";
-	expr += "([.[:s:]]*)";
+	expr += "([^]*)";
 	if (!std::regex_match(str, match, reg))
 	{
 		if (this->checkForErrors(str, res.post, errors))
@@ -38,8 +38,8 @@ Parser::t_tag_pair		Parser::getTagPair(
 			return (res);
 		}
 	}
-	res.name = match.str(0);
-	res.content = match.str(1);
-	res.post = match.str(3);
+	res.name = match.str(1);
+	res.content = match.str(2);
+	res.post = match.str(4);
 	return (res);
 }

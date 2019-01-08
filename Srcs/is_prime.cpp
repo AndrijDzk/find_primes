@@ -22,7 +22,7 @@ static bool		simple_tests(t_nb nbr)
 		return (false);
 	else if (nbr < 4)
 		return (true);
-		throw std::exception();
+	throw std::exception();
 }
 
 bool			is_prime(t_nb nbr)
