@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_prime_test.cpp                                  :+:      :+:    :+:   */
+/*   init_static.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adzikovs <adzikovs@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/01 07:59:08 by adzikovs          #+#    #+#             */
-/*   Updated: 2019/01/03 08:22:35 by adzikovs         ###   ########.fr       */
+/*   Created: 2019/01/07 11:09:20 by adzikovs          #+#    #+#             */
+/*   Updated: 2019/01/07 11:12:47 by adzikovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "find_primes.hpp"
+#include "TagLTN.hpp"
 
-#include "gtest/gtest.h"
+t_vs		RootTagLTN::ValidSN;
+t_vs		IntervalsTagLTN::ValidSN;
+t_vs		IntervalTagLTN::ValidSN;
 
-TEST(isPrimeTest, zeroIsntPrime)
+void		init_static(void)
 {
-	EXPECT_EQ(is_prime(0), 0);
+	RootTagLTN::ValidSN = {INTERVALS_TAG_NAME};
+	IntervalsTagLTN::ValidSN = {INTERVAL_TAG_NAME};
+	IntervalTagLTN::ValidSN = {LOW_TAG_NAME, HIGH_TAG_NAME};
 }
