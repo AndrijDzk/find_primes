@@ -18,7 +18,7 @@ set(SOURCES1
 		Srcs/Parser.class.readIntervals.cpp
 		Srcs/init_static.cpp
 		Srcs/main.cpp
-		Srcs/Parser.class.cpp Srcs/TagLTNFactory.class.cpp Srcs/Parser.class.strIntoLTNType.cpp)
+		Srcs/Parser.class.cpp Srcs/TagLTNFactory.class.cpp Srcs/Parser.class.strIntoLTNType.cpp Srcs/primes_into_xml.cpp)
 
 set(CMAKE_CXX_FLAGS "-std=c++11")
 
@@ -28,5 +28,6 @@ message("EXECUTABLE_OUTPUT_PATH - ${EXECUTABLE_OUTPUT_PATH}")
 
 add_executable(${NAME1} ${SOURCES1})
 target_include_directories(${NAME1} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/${INC}/)
+target_link_libraries(${NAME1} -lpthread)
 
 add_subdirectory("Tests")

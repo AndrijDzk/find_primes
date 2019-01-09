@@ -1,0 +1,29 @@
+<root>
+    <intervals>
+        dsfs
+        <interval>
+            <low>
+                -1
+            </low>
+            <high>
+                123
+            </high>
+        </interval>
+        <interval>
+            <low>
+                11
+            </low>
+            <high>
+                19
+            </high>
+        </interval>
+        <interval>
+            <low>
+                76
+            </low>
+            <high>
+                123
+            </high>
+        </interval>
+    </intervals>
+</root>

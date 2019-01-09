@@ -6,7 +6,7 @@
 /*   By: adzikovs <adzikovs@student.unit.ua>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 10:22:14 by adzikovs          #+#    #+#             */
-/*   Updated: 2019/01/08 15:01:38 by adzikovs         ###   ########.fr       */
+/*   Updated: 2019/01/09 09:04:58 by adzikovs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ void					Parser::proceedLine(std::string const &line)
 				this->proceedText(top);
 			else
 			{
-				search_stack.push(match.suffix());
+				if (!match.suffix().str().empty())
+					search_stack.push(match.suffix());
 				search_stack.push(match.str(0));
-				search_stack.push(match.prefix());
+				if (!match.prefix().str().empty())
+					search_stack.push(match.prefix());
 			}
 		}
 		catch (Parser::NonFatalError &e) {std::cout << "Warning: " << e.what();}
@@ -51,13 +53,17 @@ void					Parser::proceedLine(std::string const &line)
 void					Parser::proceedText(std::string const &text)
 {
 	LTN*						newTag;
+	std::regex					reg;
 
-	newTag = (*Parser::factory)(TagLTNFactory::eText, this->curr, text);
-	if (this->curr)
-		this->curr->addSubNode(newTag);
-	else
-		this->trees.push_back(newTag);
-	this->curr = newTag;
+	reg.assign("[^[:s:]]");
+	if (std::regex_search(text, reg))
+	{
+		newTag = (*Parser::factory)(TagLTNFactory::eText, this->curr, text);
+		if (this->curr)
+			this->curr->addSubNode(newTag);
+		else
+			this->trees.push_back(newTag);
+	}
 }
 
 void					Parser::proceedTag(std::string const &name, bool open)
@@ -100,7 +106,7 @@ Parser::t_intervals		Parser::readIntervals(std::string const &filename, bool str
 			for (auto const &error : tree->lexicalCheck(strict))
 			{
 				good = false;
-				tmp.push_back("Error: " + error);
+				tmp.push_back(error);
 			}
 		if (good)
 		{
@@ -124,7 +130,7 @@ Parser::t_intervals		Parser::readIntervals(std::string const &filename, bool str
 	catch (std::exception &e)
 	{
 		this->clear();
-		throw e;
+		throw Parser::FatalError(e.what());
 	}
 	this->clear();
 	throw Parser::FatalError("Error: Wrong file!");

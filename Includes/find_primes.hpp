@@ -21,3 +21,5 @@ void			init_static(void);
 bool			is_prime(t_nb nbr);
 
 std::thread*	findPrimesInRange(t_nb begin, t_nb end, MyMap &res, bool join);
+
+void			primes_into_xml(MyMap const &res, std::string const &filename);

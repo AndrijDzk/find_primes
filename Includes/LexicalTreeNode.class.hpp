@@ -14,9 +14,9 @@
 
 #include "typedefs.hpp"
 
-#define WRONG_PARRENT_ERR(NODE, PAR) "Error: " + NODE +  " inside " + PAR
-#define UNKNOWN_TEXT_ERR(TEXT) "Error: unknown text: " + TEXT
-#define NO_PARENT_ERR(NODE, PAR) "Error: " + NODE + " outside of " + PAR
+#define WRONG_PARRENT_ERR(NODE, PAR) NODE +  " inside " + PAR
+#define UNKNOWN_TEXT_ERR(TEXT) "Unknown text: " + TEXT
+#define NO_PARENT_ERR(NODE, PAR) NODE + " outside of " + PAR
 
 #define ROOT_TAG_NAME "root"
 #define INTERVALS_TAG_NAME "intervals"
